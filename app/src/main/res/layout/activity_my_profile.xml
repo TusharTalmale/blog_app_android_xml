@@ -12,13 +12,14 @@
         android:layout_width="411dp"
         android:layout_height="888dp"
         android:layout_marginTop="-2dp"
+        android:alpha="0.1"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/background" />
 
     <View
@@ -27,10 +28,9 @@
         android:layout_height="2dp"
         android:layout_marginTop="5dp"
         android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintEnd_toEndOf="@+id/tvUsername"
+        app:layout_constraintStart_toStartOf="@+id/tvUsername"
+        app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -68,9 +68,9 @@
 
     <LinearLayout
         android:id="@+id/menuContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="276dp"
+        android:layout_height="256dp"
+        android:layout_marginTop="34dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,5 +89,14 @@
             layout="@layout/item_profile_menu" />
 
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/backButtonInMYprofile"
+        android:layout_width="58dp"
+        android:layout_height="60dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_button_outline" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

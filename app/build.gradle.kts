@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.blogapp"
-    compileSdk = 34
+    compileSdk = 35
 
 
     buildFeatures {
@@ -16,7 +16,7 @@ android {
     defaultConfig {
         applicationId = "com.example.blogapp"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -54,7 +54,6 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    buildToolsVersion = "34.0.0"
 }
 
 dependencies {
@@ -72,6 +71,7 @@ dependencies {
     implementation(libs.googleid)
     implementation(libs.firebase.firestore)
     implementation(libs.play.services.cast.tv)
+    implementation(libs.androidx.swiperefreshlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
@@ -68,14 +69,7 @@ class Signinandregister_activity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
-        // Correctly initialize Cloudinary MediaManager
-        if (MediaManager.get() == null) {
-            val config = HashMap<String, String>()
-            config["cloud_name"] = "dengfxb5y" // cloud name
-            config["api_key"] = "963746953362443" // api key
-            config["api_secret"] = "cPW6sUo31yHx1DYE5phMjflts9s" // api secret
-            MediaManager.init(this, config)
-        }
+
 
 
         initViews()
@@ -109,7 +103,7 @@ class Signinandregister_activity : AppCompatActivity() {
         etRegEmail = findViewById(R.id.etRegisterEmail)
         etRegPassword = findViewById(R.id.etRegisterPassword)
         tvNewHere = findViewById(R.id.tvNewHere)
-        ivProfile = findViewById(R.id.ivProfile)
+        ivProfile = findViewById(R.id.imageView5)
     }
 
     private fun setListeners() {
@@ -213,6 +207,7 @@ class Signinandregister_activity : AppCompatActivity() {
     private fun uploadImageToCloudinary(name: String, email: String) {
         selectedImageUri?.let { uri ->
             MediaManager.get().upload(uri)
+                .unsigned("blog_app_unsigned")
                 .callback(object : UploadCallback {
                     override fun onStart(requestId: String?) {
                         Toast.makeText(
@@ -296,5 +291,33 @@ class Signinandregister_activity : AppCompatActivity() {
         etRegName.visibility = View.VISIBLE
         etRegEmail.visibility = View.VISIBLE
         etRegPassword.visibility = View.VISIBLE
+    }
+
+    private fun toggleButtonLoading(isLoading: Boolean) {
+        val progressDrawable = CircularProgressDrawable(this).apply {
+            strokeWidth = 5f
+            centerRadius = 30f
+            setColorSchemeColors(android.graphics.Color.WHITE)
+            start()
+        }
+
+        if (isLoading) {
+            // 1. Disable clicking to prevent multiple requests
+            btnRegister.isEnabled = false
+
+            // 2. Clear text and show the loader as a compound drawable
+            btnRegister.text = ""
+            btnRegister.setCompoundDrawablesWithIntrinsicBounds(progressDrawable, null, null, null)
+
+            // Centering the icon since text is gone
+            btnRegister.compoundDrawablePadding = 0
+        } else {
+            // 1. Re-enable clicking
+            btnRegister.isEnabled = true
+
+            // 2. Restore original text and remove loader
+            btnRegister.text = "Register"
+            btnRegister.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
+        }
     }
 }

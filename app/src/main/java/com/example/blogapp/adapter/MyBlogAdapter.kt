@@ -1,5 +1,6 @@
 package com.example.blogapp.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,17 +10,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.blogapp.R
+import com.example.blogapp.create_blog
 import com.example.blogapp.model.BlogModel
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import com.example.blogapp.readmoreblog
+import com.google.firebase.firestore.FirebaseFirestore
 
 // The adapter no longer needs a Context parameter if it's only used for Glide
 class MyBlogAdapter(
-    private val items: List<BlogModel>
+    private val items: MutableList<BlogModel>
 ) : RecyclerView.Adapter<MyBlogAdapter.MyBlogViewHolder>() {
 
-    // The ViewHolder now takes a View and finds its children by ID
     inner class MyBlogViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val blogTitle: TextView = itemView.findViewById(R.id.blogTitle)
         private val blogDescription: TextView = itemView.findViewById(R.id.blogDescription)
@@ -35,19 +35,55 @@ class MyBlogAdapter(
             blogDescription.text = blogItem.desc
             blogUserName.text = blogItem.author
 
-            val date = Date(blogItem.createdAt)
-            val format = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
-            blogDate.text = format.format(date)
+//            val date =
+            blogDate.text = blogItem.createdAt.toString()
+//            val format = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+//            blogDate.text = format.format(date)
 
             Glide.with(itemView.context)
                 .load(blogItem.authorImage)
                 .into(blogUserImage)
 
             // Set OnClickListeners
-            editButton.setOnClickListener { /* Handle edit */ }
-            deleteButton.setOnClickListener { /* Handle delete */ }
-            readMoreButton.setOnClickListener { /* Handle read more */ }
+            editButton.setOnClickListener {
+                val intent = Intent(
+                    itemView.context,
+                    create_blog::class.java
+                )
+                intent.putExtra("MODE", "EDIT")
+                intent.putExtra("blogId", blogItem.blogId)
+                intent.putExtra("title", blogItem.title)
+                intent.putExtra("desc", blogItem.desc)
+                itemView.context.startActivity(intent)
+            }
+            deleteButton.setOnClickListener {
+                val pos = bindingAdapterPosition
+                if (pos != RecyclerView.NO_POSITION) {
+                    deleteBlog(blogItem.blogId, pos)
+                }
+
+            }
+            readMoreButton.setOnClickListener {
+                val intent = Intent(
+                    itemView.context,
+                    readmoreblog::class.java
+                )
+                intent.putExtra("blogId", blogItem.blogId)
+                itemView.context.startActivity(intent)
+            }
         }
+    }
+
+    private fun deleteBlog(blogId: String, position: Int) {
+        FirebaseFirestore.getInstance()
+            .collection("blogs")
+            .document(blogId)
+            .delete()
+            .addOnSuccessListener {
+                items.removeAt(position)
+                notifyItemRemoved(position)
+                notifyItemRangeChanged(position, items.size)
+            }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyBlogViewHolder {

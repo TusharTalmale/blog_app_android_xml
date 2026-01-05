@@ -21,6 +21,8 @@ class create_blog : AppCompatActivity() {
 
     private lateinit var firestore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
+    private var isEditMode = false
+    private var editBlogId: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +34,17 @@ class create_blog : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val mode = intent.getStringExtra("MODE")
+
+        if (mode == "EDIT") {
+            isEditMode = true
+            editBlogId = intent.getStringExtra("blogId")
+
+            etTitle.setText(intent.getStringExtra("title"))
+            etDesc.setText(intent.getStringExtra("desc"))
+
+            btnAddBlog.text = "Update Blog"
+        }
 
         firestore = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
@@ -42,13 +55,18 @@ class create_blog : AppCompatActivity() {
         btnBack = findViewById(R.id.backbutton)
 
         btnAddBlog.setOnClickListener {
-            createBlog()
+            if (isEditMode) {
+                updateBlog()
+            } else {
+                createBlog()
+            }
         }
+
 
         btnBack.setOnClickListener {
             finish()
         }
-    
+
 
     }
 
@@ -85,7 +103,8 @@ class create_blog : AppCompatActivity() {
                     "authorImage" to authorImage,
                     "likes" to 0,
                     "likedBy" to emptyList<String>(),
-                    "createdAt" to System.currentTimeMillis()
+                    "createdAt" to com.google.firebase.Timestamp.now()
+
                 )
 
                 firestore.collection("blogs")
@@ -99,5 +118,32 @@ class create_blog : AppCompatActivity() {
 
 
     }
+
+    private fun updateBlog() {
+        val title = etTitle.text.toString().trim()
+        val desc = etDesc.text.toString().trim()
+
+        if (title.isEmpty() || desc.isEmpty()) {
+            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val blogId = editBlogId ?: return
+
+        firestore.collection("blogs")
+            .document(blogId)
+            .update(
+                mapOf(
+                    "title" to title,
+                    "desc" to desc,
+                    "updatedAt" to com.google.firebase.Timestamp.now()
+                )
+            )
+            .addOnSuccessListener {
+                Toast.makeText(this, "Blog updated", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+    }
+
 
 }

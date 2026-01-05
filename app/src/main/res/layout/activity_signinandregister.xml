@@ -4,6 +4,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:alpha="1"
     android:padding="16dp">
 
 
@@ -47,40 +48,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
+    <!-- Footer -->
+
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="215dp"
         android:layout_height="56dp"
-        android:layout_marginTop="400dp"
-        android:backgroundTint="@color/red"
+        android:layout_marginTop="372dp"
+        android:backgroundTint="@android:color/transparent"
         android:fontFamily="@font/love_ya_like_a_sister"
         android:text="Login"
-        android:textColor="@android:color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle"
+        app:strokeColor="@color/red"
+        app:strokeWidth="2dp" />
 
     <TextView
         android:id="@+id/tvNewHere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="New here?"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="@+id/btnLogin"
         app:layout_constraintTop_toBottomOf="@id/btnLogin" />
-
-    <!-- Footer -->
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@android:color/transparent"
         android:fontFamily="@font/love_ya_like_a_sister"
         android:text="Register"
@@ -91,8 +97,7 @@
         app:layout_constraintEnd_toEndOf="@+id/btnLogin"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@+id/tvNewHere"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
         app:strokeColor="@color/blue"
         app:strokeWidth="2dp" />
 
@@ -150,9 +155,9 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/edit_text_blue_view"
         android:fontFamily="@font/love_ya_like_a_sister"
+        android:hint="Enter your Name"
         android:inputType="textPersonName"
         android:paddingStart="12dp"
-        android:text="Enter Your Name"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/tvSubtitle"
         app:layout_constraintStart_toStartOf="@+id/tvSubtitle"
@@ -165,8 +170,8 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/edit_text_blue_view"
         android:fontFamily="@font/love_ya_like_a_sister"
+        android:hint="Enter your Email"
         android:paddingStart="12dp"
-        android:text="Enter your email"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/etRegName"
         app:layout_constraintStart_toStartOf="@+id/etRegName"
@@ -180,29 +185,39 @@
         android:background="@drawable/edit_text_blue_view"
         android:fontFamily="@font/love_ya_like_a_sister"
         android:gravity="center"
-        android:text="Password "
+        android:hint="Enter your Password"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/etRegisterEmail"
         app:layout_constraintStart_toStartOf="@+id/etRegisterEmail"
         app:layout_constraintTop_toBottomOf="@+id/etRegisterEmail" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="24dp"
-        app:cardCornerRadius="200dp"
+        app:cardCornerRadius="35dp"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toEndOf="@+id/tvSubtitle"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/tvSubtitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle">
+        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle"
+        app:strokeColor="@color/blue"
+        app:strokeWidth="1dp">
 
-        <ImageView
-            android:id="@+id/imageView5"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/girl" />
-    </androidx.cardview.widget.CardView>
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/girl" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

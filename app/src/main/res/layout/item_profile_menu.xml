@@ -14,12 +14,12 @@
         android:id="@+id/ivIconforuse"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        app:tint="@android:color/white" />
+        app:tint="@android:color/black" />
 
     <TextView
         android:id="@+id/tvTitleforuse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/black" />
 </LinearLayout>

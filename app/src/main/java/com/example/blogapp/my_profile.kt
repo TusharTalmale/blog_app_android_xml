@@ -2,12 +2,15 @@ package com.example.blogapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.example.blogapp.register.Signinandregister_activity
 import com.google.firebase.auth.FirebaseAuth
@@ -23,11 +26,18 @@ class my_profile : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
+    private lateinit var backbutton: ImageButton
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_my_profile)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
@@ -37,11 +47,16 @@ class my_profile : AppCompatActivity() {
         menuAdd = findViewById(R.id.menuAdd)
         menuMyArticles = findViewById(R.id.menuMyArticles)
         menuLogout = findViewById(R.id.menuLogout)
+        backbutton = findViewById(R.id.backButtonInMYprofile)
 
+        backbutton.setOnClickListener {
+            finish()
+        }
 
 
         loadUserData()
         setupMenu()
+        setupMenuClicks()
     }
 
     private fun loadUserData() {
@@ -83,17 +98,14 @@ class my_profile : AppCompatActivity() {
 
     private fun setupMenuClicks() {
 
-        // ➕ Add new article
         menuAdd.setOnClickListener {
             startActivity(Intent(this, create_blog::class.java))
         }
 
-        // 📄 Your articles
         menuMyArticles.setOnClickListener {
             startActivity(Intent(this, MyBlogsActivity::class.java))
         }
 
-        // 🚪 Logout
         menuLogout.setOnClickListener {
             auth.signOut()
             Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show()

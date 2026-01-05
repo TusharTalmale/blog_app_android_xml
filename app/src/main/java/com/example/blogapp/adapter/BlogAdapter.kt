@@ -1,5 +1,6 @@
 package com.example.blogapp.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blogapp.R
 import com.example.blogapp.model.BlogModel
+import com.example.blogapp.readmoreblog
 import com.google.firebase.firestore.FirebaseFirestore
 
 class BlogAdapter(
@@ -47,6 +49,8 @@ class BlogAdapter(
         holder.tvDate.text = vlog.createdAt.toString()
         holder.tvDesc.text = vlog.desc
         holder.tvLikes.text = vlog.likes.toString()
+//        val sdf = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+//        holder.tvDate.text = sdf.format(vlog.createdAt.toString())
 
         holder.ivLike.setImageResource(
             if (isLiked) R.drawable.like_filled_red
@@ -60,15 +64,14 @@ class BlogAdapter(
 
         holder.ivLike.setOnClickListener {
 
-            if (isLiked) {
-                blogRef.update("likedBy", vlog.likedBy.apply { remove(currentUserId) })
-                vlog.likes--
-                notifyItemChanged(holder.adapterPosition)
-            } else {
-                blogRef.update("likedBy", vlog.likedBy.apply { add(currentUserId) })
+            val isCurrentlyLiked = vlog.likedBy.contains(currentUserId)
 
+            if (isCurrentlyLiked) {
+                vlog.likedBy.remove(currentUserId)
+                if (vlog.likes > 0) vlog.likes--
+            } else {
+                vlog.likedBy.add(currentUserId)
                 vlog.likes++
-                notifyItemChanged(holder.adapterPosition)
             }
 
             blogRef.update(
@@ -78,7 +81,16 @@ class BlogAdapter(
                 )
             )
 
+            holder.ivLike.setImageResource(
+                if (isCurrentlyLiked)
+                    R.drawable.like_black_outline
+                else
+                    R.drawable.like_filled_red
+            )
+            notifyItemChanged(holder.adapterPosition)
+
         }
+
 
 //        holder.ivSave.setOnClickListener {
 //            vlog.isSaved = !vlog.isSaved
@@ -86,8 +98,14 @@ class BlogAdapter(
 //        }
 
         holder.btnReadMore.setOnClickListener {
-            // next step: open detail page
+            val intent = Intent(
+                holder.itemView.context,
+                readmoreblog::class.java
+            )
+            intent.putExtra("blogId", vlog.blogId)
+            holder.itemView.context.startActivity(intent)
         }
+
     }
 
     override fun getItemCount(): Int = blogList.size

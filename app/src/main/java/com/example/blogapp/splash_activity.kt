@@ -7,8 +7,9 @@ import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.blogapp.home.HomeActivity
-import com.example.blogapp.register.Signinandregister_activity
+import com.example.blogapp.register.Welcome_activity
 import com.google.firebase.auth.FirebaseAuth
+
 
 class splash_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,10 +25,10 @@ class splash_activity : AppCompatActivity() {
                 startActivity(Intent(this, HomeActivity::class.java))
             } else {
                 // User not logged in
-                startActivity(Intent(this, Signinandregister_activity::class.java))
+                startActivity(Intent(this, Welcome_activity::class.java))
             }
-
             finish()
+
 
         }, 1500)
     }

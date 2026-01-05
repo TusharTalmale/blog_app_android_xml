@@ -40,7 +40,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="56dp"
         android:fontFamily="@font/love_ya_like_a_sister"
         android:text="Share your story\n with us"
         android:textAlignment="center"
@@ -55,18 +55,21 @@
 
     <Button
         android:id="@+id/button"
+        android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="76dp"
         android:backgroundTint="@android:color/transparent"
         android:fontFamily="@font/love_ya_like_a_sister"
         android:text="Login"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.1"
         app:strokeColor="@color/red"
         app:strokeWidth="2dp" />
 
@@ -75,12 +78,14 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="244dp"
+        android:layout_marginBottom="80dp"
         android:backgroundTint="@android:color/transparent"
         android:fontFamily="@font/love_ya_like_a_sister"
         android:text="Register"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView4"
@@ -96,11 +101,11 @@
         android:text="New here?"
         android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.16" />
+        app:layout_constraintVertical_bias="0.576" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

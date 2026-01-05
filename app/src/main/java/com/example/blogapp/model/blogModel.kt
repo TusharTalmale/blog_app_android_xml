@@ -1,5 +1,7 @@
 package com.example.blogapp.model
 
+import com.google.firebase.Timestamp
+
 data class BlogModel(
     var blogId: String = "",
     var title: String = "",
@@ -9,5 +11,5 @@ data class BlogModel(
     var desc: String = "",
     var likes: Int = 0,
     var likedBy: MutableList<String> = mutableListOf(),
-    var createdAt: Long = 0L
+    var createdAt: Timestamp? = null
 )
