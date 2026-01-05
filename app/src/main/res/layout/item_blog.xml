@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemblog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:clipToPadding="false"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!-- 🔹 ROW 1 : TITLE + PROFILE -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="278dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="40dp"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="Please Start Writing Better Git Commits"
+                android:textColor="#007BFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/ivProfile"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="280dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/girl"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvAuthor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.357" />
+
+            <TextView
+                android:id="@+id/tvAuthor"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:fontFamily="@font/love_ya_like_a_sister"
+                android:maxLines="2"
+                android:text="New Blog"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="end"
+                android:text="Jul 29, 2022"
+                android:textColor="#999999"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAuthor" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 🔹 Author -->
+
+        <!-- 🔹 Date -->
+
+        <!-- 🔹 Divider -->
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="8dp"
+            android:background="#E0E0E0" />
+
+        <!-- 🔹 Description -->
+        <TextView
+            android:id="@+id/eddesc"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:padding="2dp"
+            android:text="I recently read a helpful article on Hashnode...I recently read a helpful article on Hashnode...I recently read a helpful article on Hashnode...I recently read a helpful article on Hashnode...I recently read a helpful article on Hashnode...I recently read a helpful article on Hashnode..."
+            android:textSize="14sp" />
+
+        <!-- 🔹 BOTTOM ROW -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:textAlignment="center">
+
+
+            <!-- 🔹 Likes & Save -->
+
+            <Button
+                android:id="@+id/btnReadMore"
+                android:layout_width="128dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#2196F3"
+                android:elevation="2dp"
+                android:paddingHorizontal="24dp"
+                android:text="Read more"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="126dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvLikes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="20" />
+
+                <ImageView
+                    android:id="@+id/ivLike"
+                    android:layout_width="37dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:src="@drawable/like_black_outline" />
+
+                <ImageView
+                    android:id="@+id/ivSave"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="12dp"
+                    android:src="@drawable/save_black_outline" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

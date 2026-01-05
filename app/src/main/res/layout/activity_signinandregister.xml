@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="415dp"
+        android:layout_height="899dp"
+        android:alpha="0.1"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:fontFamily="@font/love_ya_like_a_sister"
+        android:text="BLOG."
+        android:textColor="@color/black"
+        android:textSize="46sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/love_ya_like_a_sister"
+        android:text="Share your story\nwith us."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="215dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="400dp"
+        android:backgroundTint="@color/red"
+        android:fontFamily="@font/love_ya_like_a_sister"
+        android:text="Login"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
+
+    <TextView
+        android:id="@+id/tvNewHere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="New here?"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+        app:layout_constraintStart_toStartOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+
+    <!-- Footer -->
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@android:color/transparent"
+        android:fontFamily="@font/love_ya_like_a_sister"
+        android:text="Register"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvFooter"
+        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/tvNewHere"
+        app:layout_constraintVertical_bias="0.0"
+        app:strokeColor="@color/blue"
+        app:strokeWidth="2dp" />
+
+    <TextView
+        android:id="@+id/tvFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/love_ya_like_a_sister"
+        android:text="Design by \n Tushar"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etEmail"
+        android:layout_width="215dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/edit_text_view"
+        android:fontFamily="@font/love_ya_like_a_sister"
+        android:hint="Enter Your Email"
+        android:inputType="textEmailAddress"
+        android:paddingStart="12dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvSubtitle"
+        app:layout_constraintStart_toStartOf="@+id/tvSubtitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etPassword"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edit_text_view"
+
+        android:fontFamily="@font/love_ya_like_a_sister"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:paddingStart="12dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/etEmail"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/etEmail"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etRegName"
+        android:layout_width="216dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edit_text_blue_view"
+        android:fontFamily="@font/love_ya_like_a_sister"
+        android:inputType="textPersonName"
+        android:paddingStart="12dp"
+        android:text="Enter Your Name"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvSubtitle"
+        app:layout_constraintStart_toStartOf="@+id/tvSubtitle"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etRegisterEmail"
+        android:layout_width="216dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edit_text_blue_view"
+        android:fontFamily="@font/love_ya_like_a_sister"
+        android:paddingStart="12dp"
+        android:text="Enter your email"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/etRegName"
+        app:layout_constraintStart_toStartOf="@+id/etRegName"
+        app:layout_constraintTop_toBottomOf="@+id/etRegName" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etRegisterPassword"
+        android:layout_width="216dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edit_text_blue_view"
+        android:fontFamily="@font/love_ya_like_a_sister"
+        android:gravity="center"
+        android:text="Password "
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/etRegisterEmail"
+        app:layout_constraintStart_toStartOf="@+id/etRegisterEmail"
+        app:layout_constraintTop_toBottomOf="@+id/etRegisterEmail" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="200dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvSubtitle"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/tvSubtitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/girl" />
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
